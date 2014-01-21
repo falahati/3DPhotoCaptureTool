@@ -14,8 +14,8 @@ SetCompressor /SOLID lzma
 ;General
   !include "x64.nsh"
   ;Name and file
-  Name "OpenNI 3D Photo Capture Tool for Windows v1.1.0.0"
-  OutFile "../OpenNI-3D-Photo-Capture-Tool-Win-v1.1.exe"
+  Name "OpenNI 3D Photo Capture Tool for Windows v1.2.0.0"
+  OutFile "../OpenNI-3D-Photo-Capture-Tool-Win-v1.2.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\OpenNI 3D Photo Capture Tool"
@@ -100,16 +100,16 @@ Section "Main Application" SecMain
   SetOutPath "$INSTDIR"
   ;Store installation folder
   WriteRegStr HKLM "Software\OpenNI 3D Photo Capture Tool" "InstallDir" $INSTDIR
-  WriteRegStr HKLM "Software\OpenNI 3D Photo Capture Tool" "Version" "1.1.0"
+  WriteRegStr HKLM "Software\OpenNI 3D Photo Capture Tool" "Version" "1.2.0"
 
   CreateDirectory "$SMPROGRAMS\OpenNI 3D Photo Capture Tool"
   CreateShortCut "$SMPROGRAMS\OpenNI 3D Photo Capture Tool\OpenNI 3D Photo Capture Tool.lnk" "$INSTDIR\OpenNI 3D Photo Capture Tool.exe"
   CreateShortCut "$SMPROGRAMS\OpenNI 3D Photo Capture Tool\Uninstall.lnk" "$INSTDIR\Uninstall OpenNI 3D Photo Capture Tool.exe"
 
   ;Create uninstaller
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenNI 3D Photo Capture Tool 1.1 for Windows" "DisplayName" "OpenNI 3D Photo Capture Tool 1.1 for Windows (remove only)"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenNI 3D Photo Capture Tool 1.1 for Windows" "UninstallString" "$INSTDIR\Uninstall OpenNI 3D Photo Capture Tool.exe"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenNI 3D Photo Capture Tool 1.1 for Windows" "Publisher" "Soroush Falahati (falahati.net)"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenNI 3D Photo Capture Tool 1.2 for Windows" "DisplayName" "OpenNI 3D Photo Capture Tool 1.2 for Windows (remove only)"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenNI 3D Photo Capture Tool 1.2 for Windows" "UninstallString" "$INSTDIR\Uninstall OpenNI 3D Photo Capture Tool.exe"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenNI 3D Photo Capture Tool 1.2 for Windows" "Publisher" "Soroush Falahati (falahati.net)"
 
   WriteUninstaller "$INSTDIR\Uninstall OpenNI 3D Photo Capture Tool.exe"
 
@@ -162,5 +162,5 @@ Section "Uninstall"
 
 
   DeleteRegKey /ifempty HKLM "Software\OpenNI 3D Photo Capture Tool"
-  DeleteRegKey HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenNI 3D Photo Capture Tool 1.1 for Windows"
+  DeleteRegKey HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenNI 3D Photo Capture Tool 1.2 for Windows"
 SectionEnd

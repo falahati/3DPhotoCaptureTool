@@ -120,9 +120,6 @@
   <metadata name="SaveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>23, 19</value>
   </metadata>
-  <data name="lbl_registration.Text" xml:space="preserve">
-    <value>Note: This device can not register depth stream over image stream. This mean it can not give us good overly. We will try to do it our-self but results may not be good enough. We recommend using another device or if you are using Kinect you can wait for next version of OpenNI for supporting of this feature. But until that time we do our best to calculate it our-self.</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

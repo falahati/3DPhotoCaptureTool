@@ -91,6 +91,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Content Include="..\..\NiWrapper\bin\x86_Release\OpenNI.ini">
+      <Link>OpenNI.ini</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\NiWrapper\bin\x86_Release\OpenNI2\Drivers\PS1080.ini">
+      <Link>OpenNI2\Drivers\PS1080.ini</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\NiWrapper\bin\x86_Release\OpenNI2\Drivers\PSLink.ini">
+      <Link>OpenNI2\Drivers\PSLink.ini</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -102,6 +114,38 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\NiWrapper\bin\x86_Release\NiWrapper - LICENSE.txt">
+      <Link>NiWrapper - LICENSE.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\NiWrapper\bin\x86_Release\NiWrapper.dll">
+      <Link>NiWrapper.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\NiWrapper\bin\x86_Release\NiWrapper.Net - LICENSE.txt">
+      <Link>NiWrapper.Net - LICENSE.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\NiWrapper\bin\x86_Release\OpenNI2.dll">
+      <Link>OpenNI2.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\NiWrapper\bin\x86_Release\OpenNI2\Drivers\Kinect.dll">
+      <Link>OpenNI2\Drivers\Kinect.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\NiWrapper\bin\x86_Release\OpenNI2\Drivers\OniFile.dll">
+      <Link>OpenNI2\Drivers\OniFile.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\NiWrapper\bin\x86_Release\OpenNI2\Drivers\PS1080.dll">
+      <Link>OpenNI2\Drivers\PS1080.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\NiWrapper\bin\x86_Release\OpenNI2\Drivers\PSLink.dll">
+      <Link>OpenNI2\Drivers\PSLink.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="3DImageGenerator.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -138,8 +182,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(SolutionDir)..\NiWrapper\bin\$(PlatformName)_$(ConfigurationName)\*" "$(ProjectDir)$(OutDir)" /y /s /e /i /d /r /exclude:CopyExcludelist.txt
-if $(ConfigurationName) == Release (
+    <PostBuildEvent>if $(ConfigurationName) == Release (
 "$(ProgramFiles)\NSIS\makensis.exe" "$(SolutionDir)Setup\Ni3DPCT.nsi"
 )</PostBuildEvent>
   </PropertyGroup>

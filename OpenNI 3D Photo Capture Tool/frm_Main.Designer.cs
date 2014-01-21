@@ -47,8 +47,8 @@
             this.l_website = new System.Windows.Forms.LinkLabel();
             this.l_save = new System.Windows.Forms.LinkLabel();
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.lbl_registration = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.but_saveall = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.p_depth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p_image)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p_depth3d)).BeginInit();
@@ -260,33 +260,35 @@
             this.l_save.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.l_save.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.l_save_LinkClicked);
             // 
-            // lbl_registration
-            // 
-            this.lbl_registration.ForeColor = System.Drawing.Color.Red;
-            this.lbl_registration.Location = new System.Drawing.Point(516, 223);
-            this.lbl_registration.Name = "lbl_registration";
-            this.lbl_registration.Size = new System.Drawing.Size(251, 109);
-            this.lbl_registration.TabIndex = 11;
-            this.lbl_registration.Text = resources.GetString("lbl_registration.Text");
-            this.lbl_registration.Visible = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(519, 300);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(248, 242);
+            this.pictureBox1.Size = new System.Drawing.Size(248, 207);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
+            // 
+            // but_saveall
+            // 
+            this.but_saveall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.but_saveall.Enabled = false;
+            this.but_saveall.Location = new System.Drawing.Point(510, 215);
+            this.but_saveall.Name = "but_saveall";
+            this.but_saveall.Size = new System.Drawing.Size(257, 23);
+            this.but_saveall.TabIndex = 13;
+            this.but_saveall.Text = "Save Original Image and Depth";
+            this.but_saveall.UseVisualStyleBackColor = true;
+            this.but_saveall.Click += new System.EventHandler(this.but_saveall_Click);
             // 
             // frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(779, 520);
-            this.Controls.Add(this.lbl_registration);
+            this.Controls.Add(this.but_saveall);
             this.Controls.Add(this.l_save);
             this.Controls.Add(this.l_website);
             this.Controls.Add(this.but_stereo);
@@ -341,8 +343,8 @@
         private System.Windows.Forms.LinkLabel l_website;
         private System.Windows.Forms.LinkLabel l_save;
         private System.Windows.Forms.SaveFileDialog SaveFileDialog;
-        private System.Windows.Forms.Label lbl_registration;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button but_saveall;
     }
 }
 
