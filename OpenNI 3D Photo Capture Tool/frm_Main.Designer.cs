@@ -49,6 +49,7 @@
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.but_saveall = new System.Windows.Forms.Button();
+            this.l_saveanag = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.p_depth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p_image)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p_depth3d)).BeginInit();
@@ -283,11 +284,27 @@
             this.but_saveall.UseVisualStyleBackColor = true;
             this.but_saveall.Click += new System.EventHandler(this.but_saveall_Click);
             // 
+            // l_saveanag
+            // 
+            this.l_saveanag.BackColor = System.Drawing.Color.White;
+            this.l_saveanag.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.l_saveanag.Enabled = false;
+            this.l_saveanag.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.l_saveanag.Location = new System.Drawing.Point(349, 106);
+            this.l_saveanag.Name = "l_saveanag";
+            this.l_saveanag.Size = new System.Drawing.Size(54, 20);
+            this.l_saveanag.TabIndex = 14;
+            this.l_saveanag.TabStop = true;
+            this.l_saveanag.Text = "Save";
+            this.l_saveanag.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.l_saveanag.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.l_saveanag_LinkClicked);
+            // 
             // frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(779, 520);
+            this.Controls.Add(this.l_saveanag);
             this.Controls.Add(this.but_saveall);
             this.Controls.Add(this.l_save);
             this.Controls.Add(this.l_website);
@@ -345,6 +362,7 @@
         private System.Windows.Forms.SaveFileDialog SaveFileDialog;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button but_saveall;
+        private System.Windows.Forms.LinkLabel l_saveanag;
     }
 }
 

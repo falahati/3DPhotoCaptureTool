@@ -17,6 +17,7 @@
 namespace OpenNI_3D_Photo_Capture_Tool
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
 
     #region
 
@@ -327,6 +328,7 @@ namespace OpenNI_3D_Photo_Capture_Tool
                     this.but_stereo.Enabled = false;
                     this.cb_devices.Enabled = false;
                     this.l_save.Enabled = false;
+                    this.l_saveanag.Enabled = false;
                     this.anaggen3.SwapRightLeft = this.cb_swap.Checked;
                     this.anaggen3.Smoothing = this.cb_smoothing.Checked;
                     this.anaggen3.MaxPixelDisplacement = (int)this.nud_maxdisp.Value;
@@ -378,6 +380,7 @@ namespace OpenNI_3D_Photo_Capture_Tool
                     }
 
                     this.l_save.Enabled = false;
+                    this.l_saveanag.Enabled = false;
                     this.but_anag.Enabled = false;
                     this.but_stereo.Enabled = false;
                     this.strggen3.SwapRightLeft = this.cb_swap.Checked;
@@ -559,6 +562,7 @@ namespace OpenNI_3D_Photo_Capture_Tool
                     this.but_anag.Enabled = true;
                     this.but_stereo.Enabled = true;
                     this.l_save.Enabled = true;
+                    this.l_saveanag.Enabled = true;
                     this.lastStereo = false;
                     this.p_image3d.Image = this.anaggen3.Anaglyph;
                 }
@@ -590,6 +594,7 @@ namespace OpenNI_3D_Photo_Capture_Tool
                     this.but_anag.Enabled = true;
                     this.but_stereo.Enabled = true;
                     this.l_save.Enabled = true;
+                    this.l_saveanag.Enabled = true;
                     this.lastStereo = true;
                     this.p_image3d.Image = this.strggen3.Stereoscopic_SideBySide;
                 }
@@ -704,7 +709,16 @@ namespace OpenNI_3D_Photo_Capture_Tool
                             c.Save(this.SaveFileDialog.FileName, ImageFormat.Bmp);
                             break;
                         default:
-                            c.Save(this.SaveFileDialog.FileName, ImageFormat.Jpeg);
+                            c.Save(
+                                    this.SaveFileDialog.FileName,
+                                    ImageCodecInfo.GetImageEncoders().First(x => x.FormatID == ImageFormat.Jpeg.Guid),
+                                    new EncoderParameters()
+                                    {
+                                        Param = new[]
+                                            {
+                                                new EncoderParameter(Encoder.Quality, (long)100)
+                                            }
+                                    });
                             break;
                     }
                 }
@@ -726,8 +740,70 @@ namespace OpenNI_3D_Photo_Capture_Tool
                             p.Save(this.SaveFileDialog.FileName, ImageFormat.Bmp);
                             break;
                         default:
-                            p.Save(this.SaveFileDialog.FileName, ImageFormat.Jpeg);
+                            p.Save(
+                                    this.SaveFileDialog.FileName,
+                                    ImageCodecInfo.GetImageEncoders().First(x => x.FormatID == ImageFormat.Jpeg.Guid),
+                                    new EncoderParameters()
+                                    {
+                                        Param = new[]
+                                            {
+                                                new EncoderParameter(Encoder.Quality, (long)100)
+                                            }
+                                    });
                             break;
+                    }
+                }
+            }
+        }
+
+        private void l_saveanag_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.SaveFileDialog.FileName = string.Empty;
+            this.SaveFileDialog.Filter = "Jpg File|*.jpg|BMP File|*.bmp|PNG File|*.png";
+            this.SaveFileDialog.Title = "Save Anaglyph Depth";
+            if (this.SaveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string extension = Path.GetExtension(this.SaveFileDialog.FileName);
+                if (extension != null)
+                {
+                    if (this.lastStereo)
+                    {
+                        switch (extension.ToLower().Trim())
+                        {
+                            case "png":
+                                this.strggen3.SaveAnaglyph(this.SaveFileDialog.FileName, ImageFormat.Png);
+                                break;
+                            case "bmp":
+                                this.strggen3.SaveAnaglyph(this.SaveFileDialog.FileName, ImageFormat.Bmp);
+                                break;
+                            default:
+                                this.strggen3.SaveAnaglyph(this.SaveFileDialog.FileName, ImageFormat.Jpeg, 100);
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (extension.ToLower().Trim())
+                        {
+                            case "png":
+                                this.p_depth3d.Image.Save(this.SaveFileDialog.FileName, ImageFormat.Png);
+                                break;
+                            case "bmp":
+                                this.p_depth3d.Image.Save(this.SaveFileDialog.FileName, ImageFormat.Bmp);
+                                break;
+                            default:
+                                this.p_depth3d.Image.Save(
+                                    this.SaveFileDialog.FileName,
+                                    ImageCodecInfo.GetImageEncoders().First(x => x.FormatID == ImageFormat.Jpeg.Guid),
+                                    new EncoderParameters()
+                                        {
+                                            Param = new[]
+                                            {
+                                                new EncoderParameter(Encoder.Quality, (long)100)
+                                            }
+                                        });
+                                break;
+                        }
                     }
                 }
             }
